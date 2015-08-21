@@ -67,16 +67,19 @@
                     </div>
                 </div>
 
+                <!---Tooltip directives-->
                 <div class="col-sm-offset-3 col-sm-9">
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" value="isUnderNonCompete"
                                    ng-model="editableEmployee.isUnderNonCompete" />
-                            Is employee under a non-compete contract?
+                            <span tooltip="Contact legal if you are uncertain"
+                                  tooltip-placement="right"
+                                  tooltip-trigger="mouseenter">Is employee under a non-compete contract?</span>
                         </label>
                     </div>
                 </div>
-
+                <!--Add collapsable method-->
                 <div class="form-group" collapse="!editableEmployee.isUnderNonCompete">
                     <label for="nonCompeteNotes" class="col-sm-3 control-label">
                         Non-Complete Notes
