@@ -18,6 +18,10 @@ angularFormsApp.controller('efController',
             "Administration"
         ];
 
+        $scope.shouldShowFullName = function () {
+            return true;
+        };
+
         $scope.programmingLanguages = [
             "C",
             "CSS",
@@ -39,6 +43,10 @@ angularFormsApp.controller('efController',
 
         $scope.submitForm = function () {
             
+            $scope.$broadcast('show-errors-event');
+            if ($scope.employeeForm.$invalid)
+                return;
+
             if ($scope.editableEmployee.id == 0) {
                 //insert new employee
                 DataService.insertEmployee($scope.editableEmployee);
@@ -57,9 +65,14 @@ angularFormsApp.controller('efController',
 
         $scope.cancelForm = function () {
             $window.history.back();
-
-            //$modalInstance.dismiss();
         };
+
+        $scope.resetForm = function () {
+            $scope.broadcast('hide-errors-event');
+        };
+
+           //$modalInstance.dismiss();
+       
 
 
 });
